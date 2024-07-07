@@ -52,3 +52,4 @@ def test_get_cohorts():
     assert cohorts[1].title == 'July 2024'
     assert cohorts[1].date_start == date(2024,7,1)
     assert cohorts[1].date_end == date(2024,11,1)     
+    

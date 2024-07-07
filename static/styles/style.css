@@ -256,6 +256,7 @@ input[type="text"]
     float: right;
     margin-top: 10px;
     margin-left: 10px;
+    margin-right: 10px;
     font-size: 14px;
 }
 
@@ -265,5 +266,26 @@ input[type="text"]
     grid-row-end: 10;
     grid-column-start: 3;
     grid-column-end: 12;
-    background-color:#f5f5f5;
+}
+
+.main_card {
+    display: inline-block;
+    width: 240px;
+    height: 140px;
+    margin-left: 35px;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+
+/* .main_card_link {
+    display: flex;
+    flex-wrap: wrap;
+} */
+
+.main_card_img {
+    display: flexbox;
+    flex-wrap: wrap;
 }

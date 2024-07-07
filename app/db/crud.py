@@ -35,3 +35,21 @@ def get_cohorts():
 def get_cohort_by_id(cohort_id:int) -> Cohort:
     cohort = Cohort.get(Cohort.co_id == cohort_id)
     return cohort
+
+# Get cohort by title
+def get_cohort_by_title(title:str) -> Cohort:
+    try:
+        cohort = Cohort.get(Cohort.title == title)
+        return cohort
+    except:
+        print (f"Can't finde cohort {title}")
+
+# Create a student
+def create_student(first_name:str, last_name:str, cohort_id:int, skill_level:int) -> Student:
+    student = Student(first_name = first_name, last_name = last_name, cohort_id = cohort_id, skill_level = skill_level)
+    student.save()
+
+# Get all students
+def get_students():
+    students = [student for student in Student.select()]
+    return students
