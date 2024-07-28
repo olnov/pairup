@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session, abort
+from flask import Flask, render_template, request, redirect, session, abort, url_for
 from app.db.crud import authenticate_user
 from app.db.models import Student, Cohort
 from peewee import *
@@ -32,7 +32,30 @@ def admin():
     if 'logged_in' not in session:
         abort(403)
     user=session["user_id"]
-    return render_template ("admin.html",user=user)
+    return render_template ("admin/admin.html",user=user)
+
+@app.route("/cohorts", methods = ["GET"])
+def cohorts():
+    if 'logged_in' not in session:
+        abort(403)
+    user=session["user_id"]
+    query = Cohort.select(Cohort.title, Cohort.date_start, Cohort.date_end).dicts()
+    cohorts = []
+    for row in query:
+        cohorts.append(row)
+    # return cohorts
+    return render_template("admin/admin-cohorts.html", user=user, cohorts=cohorts)
+
+@app.route("/cohorts", methods = ["POST"])
+def add_cohort():
+    if 'logged_in' not in session:
+        abort(403)
+    user=session["user_id"]
+    title = request.form['title']
+    date_start = request.form['date_start']
+    date_end = request.form['date_end']
+    Cohort.create(title = title, date_start = date_start, date_end = date_end)
+    return redirect(url_for('cohorts'))
 
 @app.route("/students", methods=['GET'])
 def students():
@@ -43,7 +66,8 @@ def students():
     students=[]
     for row in query:
         students.append(row)
-    return students
+    # return students
+    return render_template("admin/admin-students.html", user=user, students=students)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5050, host='0.0.0.0')    

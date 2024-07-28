@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PairUP Login</title>
-    <link rel="stylesheet" href="static/styles/login.css">
+    <link rel="stylesheet" href="static/styles/style.css">
 </head>
 <body>
-    <div class="login_form">
+    <div class="wrapper">
         <div class="logo">
-            <img src="static/img/Logo-GR.png">
+            <img src="static/svg/Logo-GR.svg" alt="" class="src">
         </div>
+    </div>
+    <div class="login_form">
         <form class="" method="POST">
             <fieldset class="fieldset_wrap">
                 {% if error %}
-                <p data-testid="err" class="error">{{error}}</p>
+                    <p data-testid="err" class="error">{{error}}</p>
                 {% endif %}
                 <label for="email" class="email_label">Email:</label>
                 <input type="text" name="email" id="email" class="user_email">

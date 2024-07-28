@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head %}
+    <link rel="stylesheet" href="../static/styles/style.css" />
+    <title>{% block title %}{% endblock %}</title>
+    {% endblock %}
+</head>
+<body>
+    {% include "admin/sidebar.html" %}
+    {% include "admin/topmenu.html" %}
+    {% include "admin/dashboard.html" %}
+    {% block cohorts %}{% endblock %}
+    {% block students %}{% endblock %}
+    <script src="static/scripts/modal.js"></script>
+</body>
+</html>

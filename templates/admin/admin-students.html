@@ -1,0 +1,25 @@
+{% extends 'admin/admin.html' %}
+{% block students %}
+<div class="table_data">
+    <h3>Students</h3>
+    <table class="table">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Cohort</th>
+            <th>Skill level</th>
+            <th>Actions</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.first_name }}</td>
+            <td>{{ student.last_name }}</td>
+            <td>{{ student.title }}</td>
+            <td>{{ student.skill_level }}</td>
+            <td><button class="button-4">Edit</button> <button class="button-4">Delete</button></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br><p align="right"><button class="button-4">Add new</button></p>
+</div>
+{% endblock %}

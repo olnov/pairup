@@ -1,0 +1,41 @@
+{% extends 'admin/admin.html' %}
+{% block cohorts %}
+<div class="table_data">
+    <h3>Cohorts</h3>
+    <table class="table">
+        <tr>
+            <th>Cohort name</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Actions</th>
+        </tr>
+        {% for cohort in cohorts %}
+        <tr>
+            <td>{{ cohort.title }}</td>
+            <td>{{ cohort.date_start }}</td>
+            <td>{{ cohort.date_end }}</td>
+            <td><button class="button-4">Edit</button> <button class="button-4">Delete</button></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br><p align="right"><button class="button-4" onclick="openModal()">Add new</button></p>
+</div>
+<section class="modal hidden">
+    <div class="add_new">
+        <form action="{{ url_for('add_cohort') }}" method="POST">
+            <label>Cohort title:</label>
+            <input type="text" name="title">
+            <label>Start date</label>
+            <input type="date" name="date_start">
+            <label>End date</label>
+            <input type="date" name="date_end">
+            <p>
+                <button class="button-4">Add</button>
+                <button type="reset" onclick="closeModal()" class="button-4">Cancel</button>
+            </p>
+        </form>
+    </div>
+  </section>
+  
+  <div class="overlay hidden"></div>
+{% endblock %}
